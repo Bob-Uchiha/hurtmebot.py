@@ -4,8 +4,10 @@ import os
 from dotenv import load_dotenv
 import random
 import time
+       
+
 load_dotenv()
-client = commands.Bot(command_prefix='n.')
+client = commands.Bot(command_prefix='n.', help_command=commands.MinimalHelpCommand())
 TOKEN = os.getenv('TOKEN')
 @client.command
 async def load(ctx, extension):
@@ -23,9 +25,11 @@ async def on_ready():
 async def ping(ctx):
     await ctx.send(f'Your current latency is {round(client.latency * 1000)}ms')
 @client.command()
-async def clear(ctx, amount=10):
-    await ctx.channel.purge(limit=amount+1)
-
+async def clear(ctx, amount):
+    if amount.lower() == 'all':
+        await ctx.channel.purge(limit=1000000)
+    else:
+        await ctx.channel.purge(limit=int(amount)+1)
 
 
 

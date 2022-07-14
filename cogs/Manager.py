@@ -13,9 +13,12 @@ class Manager(commands.Cog):
     @commands.command()
     async def kick(self,ctx,member: discord.Member, *, reason=None):
         await member.kick(reason=reason)
+        await ctx.send(f'Kicked {member.mention}. Come back when you\'re ready to talk nice')
     @commands.command()
     async def ban(self,ctx,member: discord.Member, *, reason=None):
         await member.ban(reason=reason)
+        await ctx.send(f'Banned {member.mention}. Get the hell out of here')
+
     @commands.command()
     async def unban(self,ctx,*,member):
         banned_users = await ctx.guild.bans()
@@ -26,7 +29,7 @@ class Manager(commands.Cog):
 
             if(user.name, user.discriminator) == (member_name, member_discriminator):
                 await ctx.guild.unban(user)
-                await ctx.send(f'Unbanned{user.mention}')
+                await ctx.send(f'Unbanned{user.mention}. Welcome back to hell.')
 def setup(client):
     client.add_cog(Manager(client))
 
