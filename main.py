@@ -22,11 +22,6 @@ async def on_ready():
 @client.command()
 async def ping(ctx):
     await ctx.send(f'Your current latency is {round(client.latency * 1000)}ms')
-
-@client.command(aliases=['die','sixsideddie','_6die'])
-async def _6d(ctx):
-    response = (f'{random.randrange(1,6)}')
-    await ctx.send(response)
 @client.command()
 async def clear(ctx, amount=10):
     await ctx.channel.purge(limit=amount+1)
