@@ -16,9 +16,9 @@ class Tools(commands.Cog):
             song = [line.strip() for line in f]
         for i in song:
             await ctx.send(i)
-            time.sleep(2)
+            time.sleep(1)
     @commands.command(aliases=['pvp','versus'])
-    async def fight(self,ctx,x,y):
+    async def fight(self,ctx,x,y)
         await ctx.send(f'aight so {x} will fight {y}')
         seed = random()
         if seed < 0.5:
