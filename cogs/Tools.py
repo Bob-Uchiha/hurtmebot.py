@@ -7,7 +7,7 @@ class Tools(commands.Cog):
         self.client = client
     @commands.command(aliases=['dice'])
     async def die(self,ctx,x=6):
-        response = (f'{random.randrange(1,x + 1)}')
+        response = (f'{randrange(1,x + 1)}')
         await ctx.send(response)
     @commands.command(description='funny dream song')
     async def dream(self,ctx):
